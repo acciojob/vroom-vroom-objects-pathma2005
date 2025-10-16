@@ -1,22 +1,23 @@
 // Complete the js code
-function Car(make, model) {
-  this.make = make;
-  this.model = model;
-}
-Car.prototype.getMakeModel = function() {
-return `${this.make}${this.model}`;
-};
-function SportsCar(make, model, topSpeed) {
-	Car.call(this, make, model);
-  this.topSpeed = topSpeed;
-}
-SportsCar.prototype = Object.create(Car.prototype);
-SportsCar.prototype.constructor = SportsCar;
-SportsCar.prototype.getTopSpeed = function() {
-  return this.topSpeed;
-};
+function makeChange(amount) {
+  let change = {};
 
-	
+  // Calculate quarters
+  change.q = Math.floor(amount / 25);
+  amount = amount % 25;
+
+  // Calculate dimes
+  change.d = Math.floor(amount / 10);
+  amount = amount % 10;
+
+  // Calculate nickels
+  change.n = Math.floor(amount / 5);
+  amount = amount % 5;
+
+  // Remaining are pennies
+  change.p = amount;
+
+  return change;
 }
 // Do not change the code below
 window.Car = Car;
